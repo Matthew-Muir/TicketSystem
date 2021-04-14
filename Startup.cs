@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicketSystem.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicketSystem
 {
@@ -24,7 +26,11 @@ namespace TicketSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-        }
+
+            services.AddDbContext<MvcTicketContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MvcTicketContext")));
+        
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
