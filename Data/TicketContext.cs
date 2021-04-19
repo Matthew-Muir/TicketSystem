@@ -7,9 +7,9 @@ using TicketSystem.Models;
 
 namespace TicketSystem.Data
 {
-    public class MvcTicketContext : DbContext
+    public class TicketContext : DbContext
     {
-        public MvcTicketContext(DbContextOptions<MvcTicketContext> options)
+        public TicketContext(DbContextOptions<TicketContext> options)
             : base(options)
         {
 

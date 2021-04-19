@@ -10,9 +10,9 @@ namespace TicketSystem.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new MvcTicketContext(
+            using (var context = new TicketContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<MvcTicketContext>>()))
+                    DbContextOptions<TicketContext>>()))
             {
                 
                 if (context.Ticket.Any())

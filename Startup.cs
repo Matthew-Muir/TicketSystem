@@ -27,7 +27,7 @@ namespace TicketSystem
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<MvcTicketContext>(options =>
+            services.AddDbContext<TicketContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MvcTicketContext")));
         
     }

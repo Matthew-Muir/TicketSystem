@@ -8,7 +8,7 @@ using TicketSystem.Data;
 
 namespace TicketSystem.Migrations
 {
-    [DbContext(typeof(MvcTicketContext))]
+    [DbContext(typeof(TicketContext))]
     partial class MvcTicketContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

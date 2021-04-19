@@ -9,7 +9,7 @@ using TicketSystem.Data;
 
 namespace TicketSystem.Migrations
 {
-    [DbContext(typeof(MvcTicketContext))]
+    [DbContext(typeof(TicketContext))]
     [Migration("20210414202023_addNull")]
     partial class addNull
     {

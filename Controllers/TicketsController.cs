@@ -12,9 +12,9 @@ namespace TicketSystem.Controllers
 {
     public class TicketsController : Controller
     {
-        private readonly MvcTicketContext _context;
+        private readonly TicketContext _context;
 
-        public TicketsController(MvcTicketContext context)
+        public TicketsController(TicketContext context)
         {
             _context = context;
         }
