@@ -13,28 +13,32 @@ namespace TicketSystem.Controllers
     public class TicketsController : Controller
     {
         private readonly TicketContext _context;
+        private IUnitOfWork _unitOfWork;
+        private ITicketRepository _repo;
 
-        public TicketsController(TicketContext context)
+        public TicketsController(TicketContext context, ITicketRepository repo, IUnitOfWork unitOfWork)
         {
             _context = context;
+            _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: Tickets
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Ticket.ToListAsync());
+            return View(_repo.GetAllWithDescription());
         }
 
         // GET: Tickets/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int id = 0)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var ticket = _repo.Get(id);
+
             if (ticket == null)
             {
                 return NotFound();
@@ -54,26 +58,26 @@ namespace TicketSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateOpened,DateClosed,Description,ResolutionType")] Ticket ticket)
+        public IActionResult Create([Bind("Id,DateOpened,DateClosed,Description,ResolutionType")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ticket);
-                await _context.SaveChangesAsync();
+                _repo.Add(ticket);
+                _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
             return View(ticket);
         }
 
         // GET: Tickets/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int id = 0)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = _repo.Get(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -86,7 +90,7 @@ namespace TicketSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateOpened,DateClosed,Description,ResolutionType")] Ticket ticket)
+        public IActionResult Edit(int id, [Bind("Id,DateOpened,DateClosed,Description,ResolutionType")] Ticket ticket)
         {
             if (id != ticket.Id)
             {
@@ -95,37 +99,28 @@ namespace TicketSystem.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(ticket);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TicketExists(ticket.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                var updatedTicket = _repo.Get(ticket.Id);
+
+                updatedTicket.Description = ticket.Description;
+               updatedTicket.ResolutionType = ticket.ResolutionType;
+                updatedTicket.DateClosed = ticket.DateClosed;
+                updatedTicket.DateOpened = ticket.DateOpened;
+
+                _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
             return View(ticket);
         }
 
         // GET: Tickets/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int id = 0)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var ticket = _repo.Get(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -137,17 +132,17 @@ namespace TicketSystem.Controllers
         // POST: Tickets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var ticket = await _context.Ticket.FindAsync(id);
-            _context.Ticket.Remove(ticket);
-            await _context.SaveChangesAsync();
+            var ticket = _repo.Get(id);
+            _repo.Remove(ticket);
+            _unitOfWork.Complete();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TicketExists(int id)
         {
-            return _context.Ticket.Any(e => e.Id == id);
+            return _repo.GetAll().Any(t => t.Id == id);
         }
     }
 }

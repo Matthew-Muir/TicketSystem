@@ -9,6 +9,6 @@ namespace TicketSystem.Data
     public interface ITicketRepository : IRepository<Ticket>
     {
         IEnumerable<Ticket> Take(int num);
-        IEnumerable<Ticket> GetAllWithComments();
+        IEnumerable<Ticket> GetAllWithDescription();
     }
 }

@@ -29,7 +29,10 @@ namespace TicketSystem
 
             services.AddDbContext<TicketContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MvcTicketContext")));
-        
+
+            services.AddTransient<ITicketRepository, TicketRepository>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
