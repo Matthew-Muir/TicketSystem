@@ -25,7 +25,7 @@ namespace TicketSystem.Models
                     {
                         
                         DateOpened = DateTime.Now.AddDays(-5),
-                        Description = "Priter not printing",
+                        Description = "Printer not printing",
                         ResolutionType = ResolutionType.Open
                     },
 
