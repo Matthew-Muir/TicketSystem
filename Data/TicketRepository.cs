@@ -22,7 +22,6 @@ namespace TicketSystem.Data
         public IEnumerable<Ticket> GetAllWithDescription()
         {
             return AppContext.Ticket;
-            //return AppContext.Ticket.Include(t => t.Description);
         }
 
         private TicketContext AppContext
