@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TicketSystem.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using TicketSystem.Areas.Identity.Data;
 
 namespace TicketSystem
 {
@@ -26,6 +28,8 @@ namespace TicketSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //tutorial additional
+            services.AddRazorPages();
 
             services.AddDbContext<TicketContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MvcTicketContext")));
@@ -33,7 +37,9 @@ namespace TicketSystem
             services.AddTransient<ITicketRepository, TicketRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-    }
+
+            
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +47,8 @@ namespace TicketSystem
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //tutorial addition
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -53,6 +61,8 @@ namespace TicketSystem
 
             app.UseRouting();
 
+            //tutorial addition
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -60,6 +70,8 @@ namespace TicketSystem
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //tutorial addition
+                endpoints.MapRazorPages();
             });
         }
     }

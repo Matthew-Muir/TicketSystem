@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2t1ptreM0ztU9oHolSyKUB2Oa59f7tEI1kErLzWMy1WaEvNwq/Be3YXPngoxGpkrNk49o2ucl5ICGttfnrLCdw==",
+  "dgSpecHash": "eHIO5LibzbHqM3C5Y+XhGgedEeP8rBXThi8dfy2JtdgdBivgi6aRy8ZP6ntcWNsZTIJFG4wzXDEpR+WU6P9mLw==",
   "success": true,
   "projectFilePath": "C:\\Users\\coded\\source\\repos\\Adv Web Dev\\TicketSystem\\TicketSystem\\TicketSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\coded\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.6\\microsoft.aspnetcore.cryptography.internal.5.0.6.nupkg.sha512",
     "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.6\\microsoft.aspnetcore.cryptography.keyderivation.5.0.6.nupkg.sha512",
+    "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.6\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.6.nupkg.sha512",
     "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.6\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.6.nupkg.sha512",
     "C:\\Users\\coded\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\5.0.6\\microsoft.aspnetcore.identity.ui.5.0.6.nupkg.sha512",
