@@ -38,7 +38,12 @@ namespace TicketSystem
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            
+
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //  .AddRoles<IdentityRole>()
+            //   .AddEntityFrameworkStores<TicketSystemContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +52,7 @@ namespace TicketSystem
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //tutorial addition
-                //app.UseDatabaseErrorPage();
+                
             }
             else
             {
