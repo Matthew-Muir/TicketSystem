@@ -20,7 +20,8 @@ namespace TicketSystem.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("TicketSystemContextConnection")));
 
-                services.AddDefaultIdentity<TicketSystemUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<TicketSystemUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<TicketSystemContext>();
             });
         }

@@ -481,5 +481,5 @@ C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5
 C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Views\Home\Create.cshtml.g.cs
-C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Views\Roles\Create.cshtml.g.cs
-C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Views\Roles\IIndex.cshtml.g.cs
+C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Views\Role\Create.cshtml.g.cs
+C:\Users\coded\source\repos\Adv Web Dev\TicketSystem\TicketSystem\obj\Debug\net5.0\Razor\Views\Role\Index.cshtml.g.cs
